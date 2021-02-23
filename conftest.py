@@ -1,6 +1,6 @@
 # *-* coding: utf-8 *-*
 import pytest
-from fixture_admin_console.application import Application
+from fixture.application import Application
 
 
 @pytest.fixture()

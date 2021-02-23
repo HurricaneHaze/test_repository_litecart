@@ -1,7 +1,7 @@
 # *-* coding: utf-8 *-*
 from selenium.webdriver.chrome.webdriver import WebDriver
-from fixture_admin_console.admin_console.menu_bar import MenuHelper
-from fixture_admin_console.admin_console.session import SessionHelper
+from fixture.admin_console.menu_bar import MenuHelper
+from fixture.admin_console.session import SessionHelper
 
 
 class Application:
