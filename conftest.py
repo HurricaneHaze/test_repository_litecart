@@ -4,7 +4,7 @@ from fixture.application import Application
 
 
 @pytest.fixture()
-def admin_console_app(request):
+def ad_app(request):
     fixture = Application()
     fixture.admin_console_session.login_admin_console(username='admin', password='admin')
 
@@ -17,7 +17,7 @@ def admin_console_app(request):
 
 
 @pytest.fixture()
-def litecart_app(request):
+def app(request):
     fixture = Application()
     fixture.open_home_page()
     request.addfinalizer(fixture.destroy)
