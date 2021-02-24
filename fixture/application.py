@@ -2,6 +2,7 @@
 from selenium.webdriver.chrome.webdriver import WebDriver
 from fixture.admin_console.menu_bar import MenuHelper
 from fixture.admin_console.session import SessionHelper
+from fixture.litecart.home_page import HomePageHelper
 
 
 class Application:
@@ -10,6 +11,7 @@ class Application:
         self.wd = WebDriver()
         self.admin_console_session = SessionHelper(self)
         self.admin_console_menu = MenuHelper(self)
+        self.home_page = HomePageHelper(self)
 
     def destroy(self):
         self.wd.quit()
