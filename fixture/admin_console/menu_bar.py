@@ -100,14 +100,14 @@ class MenuHelper:
     def check_language_items(self):
         wd = self.app.wd
         self.select_languages()
-        self.open_languge_page()
+        self.open_language_page()
         self.open_storage_encoding_page()
 
     def open_storage_encoding_page(self):
         wd = self.app.wd
         wd.find_element_by_css_selector('#doc-storage_encoding').click()
 
-    def open_languge_page(self):
+    def open_language_page(self):
         wd = self.app.wd
         wd.find_element_by_css_selector('#doc-languages').click()
 
@@ -234,20 +234,14 @@ class MenuHelper:
 
     def check_menu_bar(self):
         wd = self.app.wd
-        self.check_appearance_items()
-        self.check_catalog_items()
-        self.select_countries()
-        self.select_currencies()
-        self.check_customers_items()
-        self.select_geozones()
-        self.check_language_items()
-        self.check_modules_items()
-        self.check_orders_items()
-        self.check_pages_items()
-        self.check_reports_items()
-        self.check_settings_items()
-        self.check_slides_items()
-        self.check_tax_items()
-        self.check_translations_items()
-        self.check_users_items()
-        self.check_vqumodes_items()
+        menu_bar_items = len(wd.find_elements_by_css_selector('#app-'))
+        for i in range(menu_bar_items):
+            wd.find_elements_by_css_selector('#app-')[i].click()
+            submenu = wd.find_elements_by_css_selector('#app-')[i]
+            items = len(submenu.find_elements_by_css_selector('li'))
+            for j in range(items):
+                submenu = wd.find_elements_by_css_selector('#app-')[i]
+                submenu.find_elements_by_css_selector('li')[j].click()
+                if not self.get_page_header():
+                    return False
+        return True
