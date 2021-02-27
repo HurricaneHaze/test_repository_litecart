@@ -1,5 +1,6 @@
 # *-* coding: utf-8 *-*
 from selenium.webdriver.chrome.webdriver import WebDriver
+from fixture.admin_console.countries_page import CountriesHelper
 from fixture.admin_console.menu_bar import MenuHelper
 from fixture.admin_console.session import SessionHelper
 from fixture.litecart.home_page import HomePageHelper
@@ -9,8 +10,10 @@ class Application:
 
     def __init__(self):
         self.wd = WebDriver()
-        self.admin_console_session = SessionHelper(self)
-        self.admin_console_menu = MenuHelper(self)
+        self.ad_session = SessionHelper(self)
+        self.ad_menu = MenuHelper(self)
+        self.ad_countries = CountriesHelper(self)
+
         self.home_page = HomePageHelper(self)
 
     def destroy(self):
@@ -24,3 +27,6 @@ class Application:
         wd = self.wd
         wd.get('http://localhost/litecart')
 
+    def open_previous_page(self):
+        wd = self.wd
+        wd.back()
