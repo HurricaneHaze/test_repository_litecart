@@ -2,52 +2,23 @@
 import pytest
 
 
-def test_menu_bar(ad_app):
-    ad_app.admin_console_menu.select_appearance()
-    ad_app.admin_console_menu.open_template_page()
-    assert ad_app.admin_console_menu.get_page_header()
-
-    ad_app.admin_console_menu.open_logotype_page()
-    assert ad_app.admin_console_menu.get_page_header()
-
-    ad_app.admin_console_menu.select_catalog()
-    ad_app.admin_console_menu.open_catalog_page()
-    assert ad_app.admin_console_menu.get_page_header()
-
-    ad_app.admin_console_menu.open_product_groups_page()
-    assert ad_app.admin_console_menu.get_page_header()
-
-    ad_app.admin_console_menu.open_option_groups_page()
-    assert ad_app.admin_console_menu.get_page_header()
-
-    ad_app.admin_console_menu.open_manufacturers_page()
-    assert ad_app.admin_console_menu.get_page_header()
-
-    ad_app.admin_console_menu.open_suppliers_page()
-    assert ad_app.admin_console_menu.get_page_header()
-
-    ad_app.admin_console_menu.open_delivery_statuses_page()
-    assert ad_app.admin_console_menu.get_page_header()
-
-    ad_app.admin_console_menu.open_sold_out_statuses_page()
-    assert ad_app.admin_console_menu.get_page_header()
-
-    ad_app.admin_console_menu.open_quantity_units_page()
-    assert ad_app.admin_console_menu.get_page_header()
-
-    ad_app.admin_console_menu.open_csv_page()
-    assert ad_app.admin_console_menu.get_page_header()
-
-    ad_app.admin_console_menu.open_customers_page()
-    assert ad_app.admin_console_menu.get_page_header()
+def test_menu_bar_(ad_app):
+    assert ad_app.ad_menu.check_menu_bar()
 
 
 def test_countries_sorted(ad_app):
-    pass
+    countries = ad_app.ad_countries.get_countries_list()
+    sorted_countries = sorted(countries)
+    assert countries == sorted_countries
 
 
 def test_geozones(ad_app):
-    pass
+    indexes_list = ad_app.ad_countries.check_zones()
+    for country in indexes_list:
+        ad_app.ad_countries.go_to_country_zone(country)
+        zones = ad_app.ad_countries.get_country_zones_list()
+        assert zones == sorted(zones)
+        ad_app.open_previous_page()
 
 
 if __name__ == '__main__':
