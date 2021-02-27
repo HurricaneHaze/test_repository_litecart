@@ -6,10 +6,10 @@ from fixture.application import Application
 @pytest.fixture()
 def ad_app(request):
     fixture = Application()
-    fixture.admin_console_session.login_admin_console(username='admin', password='admin')
+    fixture.ad_session.login_admin_console(username='admin', password='admin')
 
     def fin():
-        fixture.admin_console_session.logout_admin_console()
+        fixture.ad_session.logout_admin_console()
         fixture.destroy()
 
     request.addfinalizer(fin)
