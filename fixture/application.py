@@ -1,22 +1,23 @@
 # *-* coding: utf-8 *-*
 from selenium.webdriver.chrome.webdriver import WebDriver
-from fixture.admin_console.countries_page import CountriesHelper
-from fixture.admin_console.menu_bar import MenuHelper
-from fixture.admin_console.session import SessionHelper
+from fixture.admin_console.countries_page import CountriesHelperAD
+from fixture.admin_console.menu_bar import MenuHelperAD
+from fixture.admin_console.session import SessionHelperAD
 from fixture.litecart.duck_page import DuckPageHelper
 from fixture.litecart.home_page import HomePageHelper
-
+from fixture.litecart.session import SessionHelper
 
 class Application:
 
     def __init__(self):
         self.wd = WebDriver()
-        self.ad_session = SessionHelper(self)
-        self.ad_menu = MenuHelper(self)
-        self.ad_countries = CountriesHelper(self)
+        self.ad_session = SessionHelperAD(self)
+        self.ad_menu = MenuHelperAD(self)
+        self.ad_countries = CountriesHelperAD(self)
 
         self.home_page = HomePageHelper(self)
         self.duck_page = DuckPageHelper(self)
+        self.session = SessionHelper(self)
 
     def destroy(self):
         self.wd.quit()
