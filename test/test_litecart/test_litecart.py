@@ -16,11 +16,10 @@ def test_login(app):
 
 def test_stickers(app):
     check_duck_sticker = app.home_page.check_sticker
-    assert check_duck_sticker(app.home_page.find_purple_duck_in_most_popular())
-    assert check_duck_sticker(app.home_page.find_red_duck_in_most_popular())
-    assert check_duck_sticker(app.home_page.find_green_duck_in_most_popular())
-    assert check_duck_sticker(app.home_page.find_blue_duck_in_most_popular())
-    assert check_duck_sticker(app.home_page.find_yellow_duck_in_most_popular())
+    assert check_duck_sticker(app.home_page.find_red_duck_in_most_popular()) == 1
+    assert check_duck_sticker(app.home_page.find_green_duck_in_most_popular()) == 1
+    assert check_duck_sticker(app.home_page.find_blue_duck_in_most_popular()) == 1
+    assert check_duck_sticker(app.home_page.find_yellow_duck_in_most_popular()) == 1
 
 
 def test_yellow_duck_page(app):
