@@ -3,6 +3,7 @@ from selenium.webdriver.chrome.webdriver import WebDriver
 from fixture.admin_console.countries_page import CountriesHelper
 from fixture.admin_console.menu_bar import MenuHelper
 from fixture.admin_console.session import SessionHelper
+from fixture.litecart.duck_page import DuckPageHelper
 from fixture.litecart.home_page import HomePageHelper
 
 
@@ -15,6 +16,7 @@ class Application:
         self.ad_countries = CountriesHelper(self)
 
         self.home_page = HomePageHelper(self)
+        self.duck_page = DuckPageHelper(self)
 
     def destroy(self):
         self.wd.quit()
@@ -30,3 +32,7 @@ class Application:
     def open_previous_page(self):
         wd = self.wd
         wd.back()
+
+    def get_current_url(self) -> str:
+        wd = self.wd
+        return wd.current_url

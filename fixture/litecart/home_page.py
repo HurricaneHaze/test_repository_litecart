@@ -35,3 +35,26 @@ class HomePageHelper:
             return True
         else:
             return False
+
+    def find_yellow_duck_in_campains(self):
+        wd = self.app.wd
+        return wd.find_element_by_css_selector('#box-campaigns .link[title*=Yellow]')
+
+    def get_href(self, web_element) -> str:
+        wd = self.app.wd
+        return web_element.get_attribute("href")
+
+    def go_to_duck_page(self, web_element):
+        wd = self.app.wd
+        web_element.click()
+
+    def check_duck_price(self, web_element) -> str:
+        wd = self.app.wd
+        duck_price = web_element.find_element_by_class_name('regular-price')
+        return duck_price.get_attribute("textContent")
+
+    def check_duck_name(self, web_element) -> str:
+        wd = self.app.wd
+        duck_name = web_element.find_element_by_class_name('name')
+        return duck_name.get_attribute("textContent")
+
