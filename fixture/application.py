@@ -7,6 +7,7 @@ from fixture.litecart.duck_page import DuckPageHelper
 from fixture.litecart.home_page import HomePageHelper
 from fixture.litecart.session import SessionHelper
 
+
 class Application:
 
     def __init__(self):
@@ -18,6 +19,13 @@ class Application:
         self.home_page = HomePageHelper(self)
         self.duck_page = DuckPageHelper(self)
         self.session = SessionHelper(self)
+
+    def is_valid(self):
+        try:
+            self.wd.current_url
+            return True
+        except:
+            return False
 
     def destroy(self):
         self.wd.quit()
