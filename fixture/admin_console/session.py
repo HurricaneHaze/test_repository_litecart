@@ -1,7 +1,7 @@
 # *-* coding: utf-8 *-*
 
 
-class SessionHelper:
+class SessionHelperAD:
 
     def __init__(self, app):
         self.app = app
