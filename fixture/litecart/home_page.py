@@ -1,9 +1,30 @@
 # *-* coding: utf-8 *-*
+from model.model_litecart.customer import Customer
+
 
 class HomePageHelper:
 
     def __init__(self, app):
         self.app = app
+
+    def open_registration_page(self):
+        wd = self.app.wd
+        login_form = wd.find_element_by_css_selector("[name=login_form]")
+        login_form.find_element_by_css_selector("a").click()
+
+    def register_new_customer(self, customer):
+        wd = self.app.wd
+        self.open_registration_page()
+        wd.find_element_by_css_selector('[name=firstname]').send_keys(customer.firstname)
+        wd.find_element_by_css_selector('[name=lastname]').send_keys(customer.lastname)
+        wd.find_element_by_css_selector('[name=address1]').send_keys(customer.address1)
+        wd.find_element_by_css_selector('[name=postcode]').send_keys(customer.postcode)
+        wd.find_element_by_css_selector('[name=city]').send_keys(customer.city)
+        wd.find_element_by_css_selector('[name=phone]').send_keys(customer.phone)
+        wd.find_element_by_css_selector('[name=email]').send_keys(customer.email)
+        wd.find_element_by_css_selector('[name=password]').send_keys(customer.password)
+        wd.find_element_by_css_selector('[name=confirmed_password]').send_keys(customer.confirmed_password)
+        wd.find_element_by_css_selector('[name=create_account]').click()
 
     def find_blue_duck_in_most_popular(self):
         wd = self.app.wd
@@ -57,4 +78,3 @@ class HomePageHelper:
         wd = self.app.wd
         duck_name = web_element.find_element_by_class_name('name')
         return duck_name.get_attribute("textContent")
-

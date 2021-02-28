@@ -1,5 +1,17 @@
 # *-* coding: utf-8 *-*
+import time
+
 import pytest
+from model.model_litecart.customer import Customer
+
+
+def test_login(app):
+    app.home_page.register_new_customer(
+        Customer(firstname='firstname', lastname='lastname', address1='address1', postcode='111111', city='city',
+                 phone='123', email='email@mail.com', password='password', confirmed_password='password'))
+    app.session.logout()
+    app.session.login(email='1@1.1', password='1')
+    app.session.logout()
 
 
 def test_stickers(app):
