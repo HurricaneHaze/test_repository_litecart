@@ -1,6 +1,6 @@
 # *-* coding: utf-8 *-*
 
-class CountriesHelper:
+class CountriesHelperAD:
 
     def __init__(self, app):
         self.app = app
