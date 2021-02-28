@@ -1,6 +1,6 @@
 # *-* coding: utf-8 *-*
 
-class MenuHelper:
+class MenuHelperAD:
 
     def __init__(self, app):
         self.app = app
