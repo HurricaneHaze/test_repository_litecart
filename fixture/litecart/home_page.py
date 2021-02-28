@@ -52,10 +52,7 @@ class HomePageHelper:
         return purple_duck
 
     def check_sticker(self, duck):
-        if len(duck.find_elements_by_css_selector('.sticker')) == 1:
-            return True
-        else:
-            return False
+        return len(duck.find_elements_by_css_selector('.sticker'))
 
     def find_yellow_duck_in_campains(self):
         wd = self.app.wd
